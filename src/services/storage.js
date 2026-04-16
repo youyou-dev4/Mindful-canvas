@@ -54,13 +54,25 @@ const DEFAULT_NOTES = [
 
 // Seed (premier lancement)
 export const seedIfEmpty = async () => {
-  const existing = await AsyncStorage.getItem(KEYS.NOTES);
-  if (!existing) {
-    await AsyncStorage.setItem(KEYS.NOTES,      JSON.stringify(DEFAULT_NOTES));
-    await AsyncStorage.setItem(KEYS.CATEGORIES, JSON.stringify(DEFAULT_CATEGORIES));
+  try {
+    console.log('Seed start');
+
+    const existing = await AsyncStorage.getItem(KEYS.NOTES);
+    console.log('Existing:', existing);
+
+    if (!existing) {
+      console.log('Seeding data...');
+
+      await AsyncStorage.setItem(KEYS.NOTES, JSON.stringify(DEFAULT_NOTES));
+      await AsyncStorage.setItem(KEYS.CATEGORIES, JSON.stringify(DEFAULT_CATEGORIES));
+    }
+
+    console.log('Seed done');
+  } catch (e) {
+    console.error('Seed error:', e);
+    throw e;
   }
 };
-
 //  Notes 
 export const getNotes = async () => {
   const data = await AsyncStorage.getItem(KEYS.NOTES);
