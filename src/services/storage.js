@@ -52,7 +52,7 @@ const DEFAULT_NOTES = [
   },
 ];
 
-// Seed (premier lancement)
+// Seed 
 export const seedIfEmpty = async () => {
   try {
     console.log('Seed start');

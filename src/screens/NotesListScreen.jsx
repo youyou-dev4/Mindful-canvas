@@ -80,7 +80,7 @@ export default function NotesListScreen({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={['top', 'left', 'right']} style={styles.container}>
       <FlatList
         data={filteredNotes}
         keyExtractor={(item) => item.id}

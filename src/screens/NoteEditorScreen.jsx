@@ -71,7 +71,7 @@ export default function NoteEditorScreen({ navigation, route }) {
   const selectedCategory = categories.find((c) => c.id === categoryId);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={['top', 'left', 'right']} style={styles.container}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}

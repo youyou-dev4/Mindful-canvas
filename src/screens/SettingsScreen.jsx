@@ -6,7 +6,7 @@ import useAppStore from '../store/useAppStore';
 import { useNotes } from '../hooks/useNotes';
 import { useCategories } from '../hooks/useCategories';
 
-// ─── Composants réutilisables ─────────────────────────────────────
+// Composants réutilisables 
 const SectionTitle = ({ label }) => (
   <Text style={styles.sectionTitle}>{label}</Text>
 );
@@ -22,7 +22,7 @@ const SettingRow = ({ icon, title, subtitle, right }) => (
   </View>
 );
 
-// ─── Screen ───────────────────────────────────────────────────────
+// Screen 
 export default function SettingsScreen() {
   const { theme, toggleTheme } = useAppStore();
   const { data: notes = [] }      = useNotes();
@@ -43,16 +43,16 @@ export default function SettingsScreen() {
     ]);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={['top', 'left', 'right']} style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
 
-        {/* ─── Header ───────────────────────────────────────────── */}
+        {/* Header*/}
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Settings</Text>
           <Text style={styles.headerSubtitle}>Personnalisez votre sanctuaire de pensée</Text>
         </View>
 
-        {/* ─── Apparence ────────────────────────────────────────── */}
+        {/* Apparence */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Text style={styles.cardIcon}>🎨</Text>
@@ -80,7 +80,7 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* ─── Sécurité ─────────────────────────────────────────── */}
+        {/*Sécurité */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Text style={styles.cardIcon}>🔒</Text>
@@ -92,7 +92,7 @@ export default function SettingsScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* ─── Stockage & Cloud ─────────────────────────────────── */}
+        {/* Stockage & Cloud*/}
         <SectionTitle label="STOCKAGE & CLOUD" />
         <View style={styles.card}>
           <SettingRow
@@ -118,7 +118,7 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* ─── À propos ─────────────────────────────────────────── */}
+        {/* À propos*/}
         <SectionTitle label="À PROPOS" />
         <View style={styles.card}>
           <SettingRow
@@ -140,7 +140,7 @@ export default function SettingsScreen() {
           />
         </View>
 
-        {/* ─── Stats rapides ────────────────────────────────────── */}
+        {/*Stats rapides */}
         <View style={styles.quickStats}>
           <View style={styles.quickStat}>
             <Text style={styles.quickStatValue}>{notes.length}</Text>
@@ -158,7 +158,7 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* ─── Déconnexion ──────────────────────────────────────── */}
+        {/* Déconnexion*/}
         <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
           <Text style={styles.logoutText}>⎋  Déconnexion</Text>
         </TouchableOpacity>
@@ -168,7 +168,7 @@ export default function SettingsScreen() {
   );
 }
 
-// ─── Styles ───────────────────────────────────────────────────────
+// Styles
 const styles = StyleSheet.create({
   container:          { flex: 1, backgroundColor: '#F8F9FA' },
   scrollContent:      { padding: 20, paddingBottom: 40 },

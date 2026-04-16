@@ -5,11 +5,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useCategories, useCreateCategory } from '../hooks/useCategories';
 import { useNotes } from '../hooks/useNotes';
 
-// ─── Couleurs disponibles pour une nouvelle catégorie ─────────────
+//  Couleurs pour une nouvelle catégorie 
 const COLORS = ['#4A6FA5', '#2C3E50', '#F39C12', '#27AE60', '#E74C3C', '#9B59B6', '#1ABC9C', '#E67E22'];
 const ICONS  = ['👤', '💼', '💡', '✈️', '🎨', '📚', '🏋️', '🎵'];
 
-// ─── Modal création catégorie ─────────────────────────────────────
+//Modal création catégorie
 const CreateCategoryModal = ({ visible, onClose, onSubmit }) => {
   const [name,  setName]  = useState('');
   const [color, setColor] = useState(COLORS[0]);
@@ -80,7 +80,7 @@ const CreateCategoryModal = ({ visible, onClose, onSubmit }) => {
   );
 };
 
-// ─── CategoryCard ─────────────────────────────────────────────────
+//CategoryCard 
 const CategoryCard = ({ category, noteCount }) => (
   <View style={[styles.card, { borderLeftColor: category.color, borderLeftWidth: 4 }]}>
     <View style={styles.cardTop}>
@@ -93,7 +93,7 @@ const CategoryCard = ({ category, noteCount }) => (
   </View>
 );
 
-// ─── Screen ───────────────────────────────────────────────────────
+//Screen
 export default function CategoriesScreen() {
   const { data: categories = [] } = useCategories();
   const { data: notes = [] }      = useNotes();
@@ -108,7 +108,7 @@ export default function CategoriesScreen() {
     setModalVisible(false);
   };
 
-  // ─── Stats ──────────────────────────────────────────────────────
+  // Stats
   const totalNotes    = notes.length;
   const updatedLast7  = notes.filter((n) => {
     const diff = Date.now() - new Date(n.updatedAt).getTime();
@@ -118,10 +118,10 @@ export default function CategoriesScreen() {
   const freeSpace     = 82;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={['top', 'left', 'right']} style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
 
-        {/* ─── Header ───────────────────────────────────────────── */}
+        {/* Header */}
         <View style={styles.header}>
           <View>
             <Text style={styles.headerLabel}>ORGANISATION</Text>
@@ -135,7 +135,7 @@ export default function CategoriesScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* ─── Cards ────────────────────────────────────────────── */}
+        {/* Cards */}
         {categories.map((cat) => (
           <CategoryCard
             key={cat.id}
@@ -144,7 +144,7 @@ export default function CategoriesScreen() {
           />
         ))}
 
-        {/* ─── Ajouter un dossier ───────────────────────────────── */}
+        {/*Ajouter un dossier*/}
         <TouchableOpacity
           style={styles.addFolder}
           onPress={() => setModalVisible(true)}
@@ -153,7 +153,7 @@ export default function CategoriesScreen() {
           <Text style={styles.addFolderText}>Ajouter un dossier</Text>
         </TouchableOpacity>
 
-        {/* ─── Stats ────────────────────────────────────────────── */}
+        {/*Stats */}
         <View style={styles.statsSection}>
           <Text style={styles.statsTitle}>Statistiques de Canvas</Text>
           <View style={styles.statsGrid}>
@@ -187,7 +187,7 @@ export default function CategoriesScreen() {
   );
 }
 
-// ─── Styles ───────────────────────────────────────────────────────
+// Styles
 const styles = StyleSheet.create({
   container:          { flex: 1, backgroundColor: '#F8F9FA' },
   scrollContent:      { padding: 20, paddingBottom: 40 },
