@@ -54,7 +54,7 @@ npx expo start
 
 ### 📝 Liste des notes
 
-![Liste des notes](./assets/screenshots/ecran_accueil.png)
+![Liste des notes](./assets/screenshots/ecran_acceuil.png)
 
 ### 📂 Catégories
 
