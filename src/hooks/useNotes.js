@@ -34,11 +34,10 @@ export const useUpdateNote = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({ id, updates }) => updateNote(id, updates),
-    onSuccess: (updatedNote) => {
-      // On invalide la liste ET la note individuelle
+    onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
-      queryClient.invalidateQueries({ queryKey: ['notes', updatedNote.id] });
-    },
+      queryClient.invalidateQueries({ queryKey: ['notes', variables.id] });
+    }
   });
 };
 
